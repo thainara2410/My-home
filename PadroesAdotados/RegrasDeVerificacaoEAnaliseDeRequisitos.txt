@@ -1,0 +1,9 @@
+Características do Requisitos:
+	RF: utilizado para identificar Requisitos Funcionais 
+    RNF:utilizado para identificar Requisitos Não Funcionais. 
+	OBS: Ambas siglas vem acompanhada de um número que é o identificador único do requisitos.
+Regras:
+    Defina somente um requisito por vez
+    Evitar palavras Ambíguas
+    Evite frases grandes
+	
