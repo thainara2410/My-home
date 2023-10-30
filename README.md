@@ -40,3 +40,16 @@ O sistema "My Home" é uma aplicação web de gerenciamento de imóveis projetad
 - Banco de Dados: MySQL
 - Servidor: AWS
 
+## Padrões de Commit
+
+- Utilize mensagens de commit descritivas que expliquem as mudanças realizadas.
+- Use verbos no imperativo (ex. "Adicione uma nova funcionalidade" em vez de "Adicionado uma nova funcionalidade").
+- Adicione um identificador de problema se estiver vinculado a um problema de rastreamento (por exemplo, "Adicione #123 para corrigir o problema #123").
+
+## Uso de Branches
+
+- Mantenha master (ou main) como a branch principal e estável.
+- Crie branches de recursos ou tarefas separadas para desenvolvimento, por exemplo, feature/nova-funcionalidade ou bugfix/correcao-de-bug.
+- Use branches de lançamento (como release/v1.0) para preparar versões para produção.
+
+
