@@ -11,12 +11,11 @@ O sistema "My Home" é uma aplicação web de gerenciamento de imóveis projetad
 - Lista de propriedades com informações detalhadas, como endereço, tipo, número de quartos, etc.
 - Adição, atualização e exclusão de propriedades.
 
-### Gestão de Inquilinos
+### Gestão de Clientes
 
-- Cadastro de inquilinos com informações pessoais e de contato.
-- Associação de inquilinos a propriedades específicas.
-- Histórico de locações de inquilinos.
-- Atualização e exclusão de inquilinos.
+- Cadastro de Clientes com informações pessoais e de contato.
+- Listar clientes
+- Atualização e exclusão de Clientes.
 
 ### Contratos de Aluguel
 
