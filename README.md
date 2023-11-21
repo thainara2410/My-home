@@ -64,6 +64,16 @@ My-home/
 
 ## Organização
 
-- A parte de código devem estar nas pastas "Myhome-BackEnd" ou "Myhome-FrontEnd" e as documentações devem estar na pasta "Requisitos".  
+- A parte de código devem estar nas pastas "Myhome-BackEnd" ou "Myhome-FrontEnd" e as documentações devem estar na pasta "Requisitos".
+
+## Boas Práticas de Codificação
+
+- Utilizar o padrão de nomenclatura Camel Case em classes, métodos e variáveis.
+- Métodos, nomes de variáveis e etc. devem possuir nomes que signicam alguma coisa em relação ao seu objetivo.
+- Nome de classes devem ser substantivos e não conter verbos. Já nomes de métodos devem conter verbos pois eles indicam ações.
+- Evitar comentários desnecessários, quando a própria função deixa claro o que está sendo feito não é necessário o uso de comentários.
+- Cada função, classe ou módulo deve ter uma única responsabilidade, para torna o código mais legível e organizado.
+- Formatar de forma clara e padronizada o escopo das classes, métodos, estruturas condicionais, estruturas de repetição.
+
 
 
