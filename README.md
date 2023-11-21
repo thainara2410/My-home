@@ -55,5 +55,13 @@ O sistema "My Home" é uma aplicação web de gerenciamento de imóveis projetad
 
 ## Estrutura de Diretório
 
+My-home/  
+|-- Myhome-FrontEnd/  
+|-- Myhome-BackEnd /  
+|-- PadroesAdotados/  
+|-- Requisitos/  
+|-- README.md
+
+
 
 
