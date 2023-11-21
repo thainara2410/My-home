@@ -64,6 +64,6 @@ My-home/
 
 ## Organização
 
--A parte de código devem estar nas pastas "Myhome-BackEnd" ou "Myhome-FrontEnd" e as documentações devem estar na pasta "Requisitos".  
+- A parte de código devem estar nas pastas "Myhome-BackEnd" ou "Myhome-FrontEnd" e as documentações devem estar na pasta "Requisitos".  
 
 
