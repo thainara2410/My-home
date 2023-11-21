@@ -62,6 +62,8 @@ My-home/
 |-- Requisitos/  
 |-- README.md
 
+## Organização
 
+-A parte de código devem estar nas pastas "Myhome-BackEnd" ou "Myhome-FrontEnd" e as documentações devem estar na pasta "Requisitos".  
 
 
