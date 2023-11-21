@@ -53,4 +53,7 @@ O sistema "My Home" é uma aplicação web de gerenciamento de imóveis projetad
 - Crie branches de recursos ou tarefas separadas para desenvolvimento, por exemplo, feature/nova-funcionalidade ou bugfix/correcao-de-bug.
 - Use branches de lançamento (como release/v1.0) para preparar versões para produção.
 
+## Estrutura de Diretório
+
+
 
