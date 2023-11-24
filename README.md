@@ -4,6 +4,15 @@
 
 O sistema "My Home" é uma aplicação web de gerenciamento de imóveis projetada para auxiliar empresas de gestão imobiliária na eficiente administração de propriedades locativas. Esse sistema simplifica o acompanhamento das propriedades, seus Clientes e os contratos de aluguel associados.
 
+## Tecnologias Utilizadas
+
+- Linguagens: Java v8, TypeScript v5, JavaScript 
+- Frameworks: Spring Boot (Java), React (versão 18)
+- Banco de Dados: MySQL v8
+- Servidor: AWS
+- HTML v5
+- CSS v3
+
 ## Principais Funcionalidades
 
 ### Gestão de Propriedades
@@ -34,12 +43,6 @@ O sistema "My Home" é uma aplicação web de gerenciamento de imóveis projetad
 - **Administradores (ADMIN):** Têm acesso completo a todas as funcionalidades do sistema, incluindo a criação, edição e exclusão de propriedades, inquilinos e contratos. Podem gerar relatórios detalhados e acompanhar o desempenho financeiro.
 
 - **Agentes de Locação (USER):** Podem visualizar informações sobre propriedades disponíveis e manter registros de inquilinos em potencial.
-
-## Tecnologias Utilizadas
-
-- Frameworks: Spring Boot (Java), React (JavaScript)
-- Banco de Dados: MySQL
-- Servidor: AWS
 
 ## Padrões de Commit
 

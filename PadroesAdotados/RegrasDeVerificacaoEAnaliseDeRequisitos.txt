@@ -5,5 +5,5 @@ Características do Requisitos:
 Regras:
     Defina somente um requisito por vez
     Evitar palavras Ambíguas
-    Evite frases grandes
+    Evite frases grandes, limitados a 60 caracteres.
 	
