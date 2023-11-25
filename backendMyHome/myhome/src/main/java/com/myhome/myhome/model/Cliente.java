@@ -1,10 +1,14 @@
 package com.myhome.myhome.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
@@ -17,6 +21,9 @@ public class Cliente {
     private String nome;
     private Integer telefone;
     private String email;
+
+    @OneToMany(mappedBy = "proprietario", cascade = CascadeType.ALL)
+    private List<Propriedade> propriedades;
 
 
     public Integer getId() {

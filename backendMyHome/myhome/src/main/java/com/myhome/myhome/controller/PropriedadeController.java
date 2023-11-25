@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.myhome.myhome.model.Cliente;
 import com.myhome.myhome.model.Propriedade;
+import com.myhome.myhome.repository.ClienteRepository;
 import com.myhome.myhome.repository.PropriedadeRepository;
 
 @RestController
@@ -24,12 +27,28 @@ import com.myhome.myhome.repository.PropriedadeRepository;
 public class PropriedadeController {
     @Autowired
     private PropriedadeRepository action;
+
+    @Autowired
+    ClienteRepository clienteRepository;
     
-    //endpoint de cadastro de propriedade
-    @CrossOrigin(origins = "*")
-    @PostMapping("/cadastrarpropriedade")
-    public Propriedade cadastrarPropriedade(@RequestBody Propriedade propriedade){
-        return action.save(propriedade);
+    @PostMapping("/cadastrarpropriedade/{clienteId}")
+    public ResponseEntity<String> cadastrarPropriedade(@PathVariable Integer clienteId, @RequestBody Propriedade propriedade) {
+        try {
+            // Verificar se o cliente existe usando o ClienteRepository
+            Optional<Cliente> clienteOptional = clienteRepository.findById(clienteId);
+
+            // Se o cliente existir, associar a propriedade a ele
+            if (clienteOptional.isPresent()) {
+                Cliente cliente = clienteOptional.get();
+                propriedade.setProprietario(cliente);
+                action.save(propriedade); // Substitua pelo método adequado em action
+                return ResponseEntity.ok("Propriedade cadastrada com sucesso!");
+            } else {
+                return ResponseEntity.badRequest().body("Cliente não encontrado");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao cadastrar propriedade: " + e.getMessage());
+        }
     }
 
     //endpoint para listar todas as propriedades

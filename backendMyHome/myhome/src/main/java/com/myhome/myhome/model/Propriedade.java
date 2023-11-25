@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.myhome.myhome.enumerador.TipoPropriedade;
 
@@ -24,7 +26,12 @@ public class Propriedade {
     private Integer quantidade_de_comodos;
     private Integer quantidade_de_banheiros;
     private String descricao_geral;
+    @ManyToOne
+    @JoinColumn(name = "proprietario_id")
+    private Cliente proprietario;
 
+    
+    
     public Integer getId() {
         return id;
     }
@@ -84,5 +91,11 @@ public class Propriedade {
     }
     public void setDescricao_geral(String descricao_geral) {
         this.descricao_geral = descricao_geral;
+    }
+    public Cliente getProprietario() {
+        return proprietario;
+    }
+    public void setProprietario(Cliente proprietario) {
+        this.proprietario = proprietario;
     }
 }
