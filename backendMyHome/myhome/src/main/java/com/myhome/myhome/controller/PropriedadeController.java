@@ -41,7 +41,7 @@ public class PropriedadeController {
 
     // Endpoint para buscar propriedades por parte do nome do bairro
     @CrossOrigin(origins = "*")
-    @GetMapping("/por-bairro")
+    @GetMapping("/porbairro")
     public List<Propriedade> consultaPropriedades(@RequestParam String parteDoBairro) {
         return action.findByBairroContaining(parteDoBairro);
     }

@@ -1,5 +1,5 @@
 package com.myhome.myhome.controller;
 
-public class Contrato {
+public class ContratoController {
     
 }
