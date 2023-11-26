@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Cliente {
     @Id
@@ -21,11 +25,16 @@ public class Cliente {
     private String nome;
     private Integer telefone;
     private String email;
-
+    
+    @JsonManagedReference
     @OneToMany(mappedBy = "proprietario", cascade = CascadeType.ALL)
     private List<Propriedade> propriedades;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL)
+    private List<Contrato> contratos;
 
+    
     public Integer getId() {
         return id;
     }
@@ -56,5 +65,10 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+    public List<Contrato> getContratos() {
+        return contratos;
+    }
+    public void setContratos(List<Contrato> contratos) {
+        this.contratos = contratos;
+    }
 }

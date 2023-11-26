@@ -1,5 +1,8 @@
 package com.myhome.myhome.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.myhome.myhome.enumerador.TipoPropriedade;
 
 @Entity
@@ -26,10 +32,16 @@ public class Propriedade {
     private Integer quantidade_de_comodos;
     private Integer quantidade_de_banheiros;
     private String descricao_geral;
+    
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "proprietario_id")
     private Cliente proprietario;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "propriedade", cascade = CascadeType.ALL)
+    private List<Contrato> contratos;
+    
     
     
     public Integer getId() {
@@ -97,5 +109,11 @@ public class Propriedade {
     }
     public void setProprietario(Cliente proprietario) {
         this.proprietario = proprietario;
+    }
+    public List<Contrato> getContratos() {
+        return contratos;
+    }
+    public void setContratos(List<Contrato> contratos) {
+        this.contratos = contratos;
     }
 }
