@@ -49,7 +49,7 @@ public class Propriedade {
     @JoinColumn(name = "proprietario_id")
     private Cliente proprietario;
 
-    //@JsonBackReference
+    
     @JsonIgnore
     @OneToMany(mappedBy = "propriedade", cascade = CascadeType.ALL)
     private List<Contrato> contratos;

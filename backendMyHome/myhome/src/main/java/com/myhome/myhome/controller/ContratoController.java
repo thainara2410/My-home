@@ -62,6 +62,12 @@ public class ContratoController {
     }
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/porcodigo")
+    public Contrato consultaContrato(@RequestParam Integer codigo) {
+        return contratoRepository.findByCodigo(codigo);
+    }
+
+    @CrossOrigin(origins = "*")
     @DeleteMapping("/excluircontrato/{id}")
     public ResponseEntity<Void> excluirContrato(@PathVariable Integer id) {
         Optional<Contrato> contratoOptional = contratoRepository.findById(id);
@@ -76,19 +82,46 @@ public class ContratoController {
 
     @CrossOrigin(origins = "*")
     @PutMapping("/atualizarcontrato/{id}")
-    public ResponseEntity<Contrato> atualizarContrato(@RequestBody Contrato novoContrato, @PathVariable Integer id) {
+    public ResponseEntity<String> atualizarContrato(@RequestBody Contrato novoContrato, @PathVariable Integer id) {
         Optional<Contrato> contratoOptional = contratoRepository.findById(id);
         if (contratoOptional.isPresent()) {
             Contrato contratoExistente = contratoOptional.get();
+            // Verifica se a propriedade existe
+            Optional<Propriedade> propriedadeOptional = propriedadeRepository.findById(novoContrato.getPropriedade().getId());
+            if (propriedadeOptional.isEmpty()) {
+                return ResponseEntity.badRequest().body("Propriedade não encontrada");
+            }else{
+                Propriedade propriedade = propriedadeOptional.get();
+                List<Contrato> listaContratos = propriedade.getContratos();
+                for(Contrato contratoDaPropriedade:listaContratos){
+                    if(contratoDaPropriedade.vigente()){
+                        if(contratoDaPropriedade.getId() != contratoExistente.getId()){
+                            System.out.println(contratoDaPropriedade.getId());
+                            System.out.println(contratoExistente.getId());
+                            return ResponseEntity.badRequest().body("Não é possível cadastrar este contrato. Existe pelo menos um contrato vigente associado a propriedade.");
+                        }
+                    }
+                }
+            }
+
+            // Verifica se o inquilino existe
+            Optional<Cliente> inquilinoOptional = clienteRepository.findById(novoContrato.getInquilino().getId());
+            if (inquilinoOptional.isEmpty()) {
+                return ResponseEntity.badRequest().body("Inquilino não encontrado");
+            }
 
             // Atualize os campos do contrato existente com os dados do novoContrato
             contratoExistente.setCodigo(novoContrato.getCodigo());
+            contratoExistente.setDataInicio(novoContrato.getDataInicio());
+            contratoExistente.setDuracao(novoContrato.getDuracao());
             contratoExistente.setTermos(novoContrato.getTermos());
             contratoExistente.setPropriedade(novoContrato.getPropriedade());
             contratoExistente.setInquilino(novoContrato.getInquilino());
 
-            Contrato contratoAtualizado = contratoRepository.save(contratoExistente);
-            return ResponseEntity.ok(contratoAtualizado);
+            contratoRepository.save(contratoExistente);
+            // Se ambas as instâncias existirem
+
+            return ResponseEntity.ok("Contrato atualizado com sucesso!");
         } else {
             return ResponseEntity.notFound().build();
         }
