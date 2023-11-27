@@ -29,7 +29,8 @@ public class PropriedadeController {
     private PropriedadeRepository action;
 
     @Autowired
-    ClienteRepository clienteRepository;
+    private ClienteRepository clienteRepository;
+
     
     @PostMapping("/cadastrarpropriedade/{clienteId}")
     public ResponseEntity<String> cadastrarPropriedade(@PathVariable Integer clienteId, @RequestBody Propriedade propriedade) {
@@ -41,6 +42,7 @@ public class PropriedadeController {
             if (clienteOptional.isPresent()) {
                 Cliente cliente = clienteOptional.get();
                 propriedade.setProprietario(cliente);
+                cliente.setPropriedades(propriedade);
                 action.save(propriedade); // Substitua pelo método adequado em action
                 return ResponseEntity.ok("Propriedade cadastrada com sucesso!");
             } else {

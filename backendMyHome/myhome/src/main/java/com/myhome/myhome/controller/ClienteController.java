@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myhome.myhome.model.Cliente;
+import com.myhome.myhome.model.Contrato;
 import com.myhome.myhome.repository.ClienteRepository;
 @RestController
 @RequestMapping("/api/myhome")
@@ -26,6 +27,7 @@ public class ClienteController {
     
     //endpoint de cadastro de cliente
     @CrossOrigin(origins = "*")
+    
     @PostMapping("/cadastrarcliente")
     public Cliente cadastrarcliente(@RequestBody Cliente cliente){
         return action.save(cliente);
@@ -38,21 +40,36 @@ public class ClienteController {
         return action.findAll();
     }
 
-    /* 
+    
     // Endpoint para buscar clientes por parte do nome do bairro
     @CrossOrigin(origins = "*")
-    @GetMapping("/porbairro")
-    public List<Cliente> consultaClientes(@RequestParam String parteDoBairro) {
-        return action.findByBairroContaining(parteDoBairro);
-    }*/
+    @GetMapping("/pornome")
+    public List<Cliente> consultaClientes(@RequestParam String parteDoNome) {
+        return action.findByNomeContaining(parteDoNome);
+    }
 
-    //Endpoint para excluir cliente
+        // Endpoint para excluir cliente
     @CrossOrigin(origins = "*")
     @DeleteMapping("/excluircliente/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<String> delete(@PathVariable Integer id) {
         Optional<Cliente> clienteOptional = action.findById(id);
+        
         if (clienteOptional.isPresent()) {
             Cliente cliente = clienteOptional.get();
+
+            // Verificar se o cliente tem contratos vigentes
+            List<Contrato> listaDeContratos = cliente.getContratos();
+            for(Contrato contrato:listaDeContratos){
+                if(contrato.vigente()){
+                    return ResponseEntity.badRequest().body("Não é possível excluir o cliente. Existe pelo menos um contrato vigente associado a este cliente.");
+                }
+            }
+
+            // Verificar se o cliente tem propriedades
+            if (!cliente.getPropriedades().isEmpty()) {
+                return ResponseEntity.badRequest().body("Não é possível excluir o cliente. Existem propriedades associadas a este cliente.");
+            }
+
             action.delete(cliente);
             return ResponseEntity.noContent().build();
         } else {

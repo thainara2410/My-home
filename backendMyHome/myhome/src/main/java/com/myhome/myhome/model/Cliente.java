@@ -9,31 +9,42 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 public class Cliente {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Integer id;
     @Column(unique = true)
+    @NotNull
     private Integer cpf;
-    
+    @NotNull
     private String nome;
+    @NotNull
     private Integer telefone;
+    @NotNull
     private String email;
     
-    @JsonManagedReference
+
+    @JsonIgnore
     @OneToMany(mappedBy = "proprietario", cascade = CascadeType.ALL)
     private List<Propriedade> propriedades;
 
-    @JsonManagedReference
+    @JsonIgnore
+
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL)
     private List<Contrato> contratos;
 
+    
     
     public Integer getId() {
         return id;
@@ -65,10 +76,17 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
+ /*   
     public List<Contrato> getContratos() {
         return contratos;
     }
     public void setContratos(List<Contrato> contratos) {
         this.contratos = contratos;
+    }*/
+    public List<Propriedade> getPropriedades() {
+        return propriedades;
+    }
+    public void setPropriedades(Propriedade propriedades) {
+        this.propriedades.add(propriedades);
     }
 }
