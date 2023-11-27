@@ -1,5 +1,6 @@
 package com.myhome.myhome.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,14 @@ public class ContratoController {
         Optional<Propriedade> propriedadeOptional = propriedadeRepository.findById(contrato.getPropriedade().getId());
         if (propriedadeOptional.isEmpty()) {
             return ResponseEntity.badRequest().body("Propriedade não encontrada");
+        }else{
+            Propriedade propriedade = propriedadeOptional.get();
+            List<Contrato> listaContratos = propriedade.getContratos();
+            for(Contrato contratoDaPropriedade:listaContratos){
+                if(contratoDaPropriedade.vigente()){
+                    return ResponseEntity.badRequest().body("Não é possível cadastrar este contrato. Existe pelo menos um contrato vigente associado a propriedade.");
+                }
+            }
         }
 
         // Verifica se o inquilino existe

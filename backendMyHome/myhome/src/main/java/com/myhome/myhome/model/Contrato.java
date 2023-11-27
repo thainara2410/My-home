@@ -35,12 +35,10 @@ public class Contrato {
     @NotNull
     private String termos;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "propriedade_id")
     private Propriedade propriedade;
 
-    
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente inquilino;

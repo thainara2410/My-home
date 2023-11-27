@@ -40,7 +40,6 @@ public class Cliente {
     private List<Propriedade> propriedades;
 
     @JsonIgnore
-
     @OneToMany(mappedBy = "inquilino", cascade = CascadeType.ALL)
     private List<Contrato> contratos;
 
@@ -76,13 +75,13 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
- /*   
+    
     public List<Contrato> getContratos() {
         return contratos;
     }
     public void setContratos(List<Contrato> contratos) {
         this.contratos = contratos;
-    }*/
+    }
     public List<Propriedade> getPropriedades() {
         return propriedades;
     }

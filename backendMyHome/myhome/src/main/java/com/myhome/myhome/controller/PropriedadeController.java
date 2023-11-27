@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myhome.myhome.model.Cliente;
+import com.myhome.myhome.model.Contrato;
 import com.myhome.myhome.model.Propriedade;
 import com.myhome.myhome.repository.ClienteRepository;
 import com.myhome.myhome.repository.PropriedadeRepository;
@@ -67,13 +68,22 @@ public class PropriedadeController {
         return action.findByBairroContaining(parteDoBairro);
     }
 
-    //Endpoint para excluir propriedade
+    // Endpoint para excluir propriedade
     @CrossOrigin(origins = "*")
     @DeleteMapping("/excluirpropriedade/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<String> deletePropriedade(@PathVariable Integer id) {
         Optional<Propriedade> propriedadeOptional = action.findById(id);
+        
         if (propriedadeOptional.isPresent()) {
             Propriedade propriedade = propriedadeOptional.get();
+
+            List<Contrato> listaContratos = propriedade.getContratos();
+            // Verificar se a propriedade tem contratos vigentes
+            for(Contrato contrato:listaContratos){
+                if(contrato.vigente()){
+                    return ResponseEntity.badRequest().body("Não é possível excluir a propriedade. Existe pelo menos um contrato vigente associado a esta propriedade.");
+                }
+            }
             action.delete(propriedade);
             return ResponseEntity.noContent().build();
         } else {

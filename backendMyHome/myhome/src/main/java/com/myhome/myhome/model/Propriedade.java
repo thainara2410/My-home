@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.myhome.myhome.enumerador.TipoPropriedade;
@@ -48,7 +49,8 @@ public class Propriedade {
     @JoinColumn(name = "proprietario_id")
     private Cliente proprietario;
 
-    @JsonManagedReference
+    //@JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "propriedade", cascade = CascadeType.ALL)
     private List<Contrato> contratos;
 
