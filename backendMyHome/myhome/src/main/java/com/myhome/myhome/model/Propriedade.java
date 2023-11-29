@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.myhome.myhome.enumerador.TipoPropriedade;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -36,7 +35,6 @@ public class Propriedade {
     private Integer numero_da_casa;
     @NotNull
     private Float valor_mensal;
-    private TipoPropriedade tipo_de_imovel;
     @NotNull
     private Integer quantidade_de_comodos;
     @NotNull
