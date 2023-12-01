@@ -7,11 +7,13 @@ O sistema "My Home" é uma aplicação web de gerenciamento de imóveis projetad
 ## Tecnologias Utilizadas
 
 - Linguagens: Java 17, TypeScript v5, JavaScript 
-- Frameworks: Spring Boot 2.7, React (versão 18)
+- Frameworks: Spring Boot 2.7(JDK), React(versão 18)(NodeJs 18)
 - Banco de Dados: MySQL v8
-- Servidor: AWS
+- Servidor: Amazon Web Services (AWS)
+- Hospedagem: Amazon Relational Database Service
 - HTML v5
 - CSS v3
+- Ferramenta de construção Front-End: Vite (versão 4)
 
 ## Principais Funcionalidades
 
