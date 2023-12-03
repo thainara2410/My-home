@@ -56,7 +56,7 @@ O sistema "My Home" é uma aplicação web de gerenciamento de imóveis projetad
 
 - Mantenha master (ou main) como a branch principal e estável.
 - Crie branches de recursos ou tarefas separadas para desenvolvimento, por exemplo, feature/nova-funcionalidade ou bugfix/correcao-de-bug.
-- Use branches de lançamento (como release/v1.0) para preparar versões para produção.
+- Use branches de lançamento (como baseline+versão) para preparar versões para produção.
 
 ## Estrutura de Diretório
 
