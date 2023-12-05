@@ -1,0 +1,136 @@
+
+body,
+html {
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+main {
+  flex: 1;
+}
+
+.cabeçalho {
+  background-color: #2f8fad;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoCabeçalho {
+  display: flex;
+  margin: 10px 0px 0px 30px;
+  flex-direction: column;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cabeçalho h1 {
+  color: white;
+  margin-top: auto;
+}
+
+.cabeçalho img {
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+}
+
+.pesquisar {
+  display: flex;
+  padding: 10px;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+.areaPesquisa {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.areaPesquisa input {
+  flex: 1;
+  padding-right: 30px;
+  background-color: #d9d9d9;
+  width: 420px;
+  height: 48px;
+  border-radius: 25px;
+  border: none;
+  z-index: 1;
+  outline: none;
+  margin-left: 60px;
+  font-size: 18px;
+  padding-left: 28px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.retangulo {
+  position: absolute;
+  width: 64px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 0px 25px 25px 0px;
+  background: #2f8fad;
+  z-index: 2;
+  margin-left: 88%;
+  cursor: pointer;
+  border: none;
+}
+
+.areaPesquisa ::placeholder {
+  position: absolute;
+  z-index: 0;
+}
+.corpoDaPagina{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.corpoDaPagina section {
+  display: flex;
+  
+  margin-top: 50px;
+  width: 258px;
+  height: 183px;
+  background: #D9D9D9;
+}
+.ladoEsquerdo{
+  background: rgba(96, 168, 190, 0.74);
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: end;
+}
+.ladoEsquerdo img,h2{
+  display: flex;
+  margin: auto;
+}
+
+.footer {
+  display: flex;
+  background-color: #2F8FAD;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  font-family: Poppins;
+  font-size: 24px;
+  color: #FFF;
+}
+.footer div{
+  margin-bottom: 50px;
+  
+}
+.link{
+   text-decoration: none;
+   color: inherit;
+   font-family: 'Roboto', sans-serif;
+}

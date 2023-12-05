@@ -1,0 +1,276 @@
+/* Estilos para o cabeçalho, pesquisa, corpo e rodapé */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&family=Roboto:wght@400;700&display=swap');
+
+body,
+html {
+  margin: 0;
+}
+
+.cabeçalho {
+  background-color: #2f8fad;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoCabeçalho {
+  display: flex;
+  margin: 10px 0px 0px 30px;
+  flex-direction: column;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cabeçalho h1 {
+  color: white;
+  margin-top: auto;
+}
+
+.cabeçalho img {
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+}
+
+.pesquisar {
+  display: flex;
+  padding: 10px;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+.areaPesquisa {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.areaPesquisa input {
+  flex: 1;
+  padding-right: 30px;
+  background-color: #d9d9d9;
+  width: 420px;
+  height: 48px;
+  border-radius: 25px;
+  border: none;
+  z-index: 1;
+  outline: none;
+  margin-left: 60px;
+  font-size: 18px;
+  padding-left: 28px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.retangulo {
+  position: absolute;
+  width: 64px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 0px 25px 25px 0px;
+  background: #2f8fad;
+  z-index: 2;
+  margin-left: 88%;
+  cursor: pointer;
+  border: none;
+}
+
+.areaPesquisa ::placeholder {
+  position: absolute;
+  z-index: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #f2f2f2;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer button {
+  width: 420px;
+  height: 60px;
+  border-radius: 25px;
+  background-color: #2f8fad;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Estilos para o formulário de cadastro */
+
+.cadastro-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  z-index: 10;
+  
+}
+
+.cadastro-overlay.show {
+  display: flex;
+  width: 944px;
+  height: 730px;
+}
+
+.form_Cadastro {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 801px;
+  height: 550px;
+  margin-bottom: 60px;
+}
+
+.form_Cadastro input {
+  
+  width: 400px;
+  height: 40px;
+  border-radius: 16px;
+  background-color: #d9d9d9;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+  padding-left: 28px;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 200px;
+}
+
+.botaoCadastrar {
+  display: flex;
+  width: 200px;
+  height: 40px;
+  border-radius: 16px;
+  background-color: #2f8fad;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+  padding-left: 28px;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  cursor: pointer;
+  margin-left: 200px;
+  align-items: center;
+}
+/* Adicione esses estilos no seu arquivo CSS */
+
+.confirm-delete-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 801px;
+  height: 506px;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8); /* Fundo escurecido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999; /* Z-index alto para sobrepor o conteúdo */
+}
+.confirm-delete-area {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-delete-overlay h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.confirm-delete-overlay p {
+  font-size: 18px;
+  margin-bottom: 24px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+}
+
+.confirm-delete-buttons button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.confirm-delete-buttons button:first-child {
+  background-color: #2f8fad; /* Vermelho */
+  color: white;
+}
+
+.confirm-delete-buttons button:last-child {
+  background-color: #6c757d; /* Cinza */
+  color: white;
+}
+.tabela_dados {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+.tabela {
+    min-width: 100%;
+    text-align: center;
+    padding: 1rem;
+    border-collapse: collapse;
+}
+.tabela caption {
+    text-transform: uppercase;
+    height: 2rem;
+    font-size: 1.2rem;
+}
+.tabela th,
+.tabela td,
+.tabela caption {
+    padding: 0.7rem;
+    align-items: center;
+}
+.tabela thead {
+    background-color: #2F8FAD;
+    
+}
+
+.tabela tbody tr:nth-of-type(odd) {
+    background-color: rgba(47, 143, 173, 0.1); /* Cor de fundo para linhas ímpares */
+}
+.tabela tbody tr:nth-of-type(even) {
+    background-color: rgba(47, 143, 173, 0.2); /* Cor de fundo para linhas pares */
+}
+.tabela tbody tr:hover {
+    background-color: rgba(47, 143, 173, 0.7); /* Cor de fundo para linhas pares */
+}

@@ -1,10 +1,23 @@
 package com.myhome.myhome.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Propriedade {
@@ -12,16 +25,34 @@ public class Propriedade {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Integer id;
     @Column(unique = true)
+    @NotNull
     private Integer nip;
-    
+    @NotNull
     private String bairro;
+    @NotNull
     private String rua;
+    @NotNull
     private Integer numero_da_casa;
+    @NotNull
     private Float valor_mensal;
+    @NotNull
     private Integer quantidade_de_comodos;
+    @NotNull
     private Integer quantidade_de_banheiros;
+    @NotNull
     private String descricao_geral;
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "proprietario_id")
+    private Cliente proprietario;
 
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "propriedade", cascade = CascadeType.ALL)
+    private List<Contrato> contratos;
+
+    
     public Integer getId() {
         return id;
     }
@@ -81,5 +112,17 @@ public class Propriedade {
     }
     public void setDescricao_geral(String descricao_geral) {
         this.descricao_geral = descricao_geral;
+    }
+    public Cliente getProprietario() {
+        return proprietario;
+    }
+    public void setProprietario(Cliente proprietario) {
+        this.proprietario = proprietario;
+    }
+    public List<Contrato> getContratos() {
+        return contratos;
+    }
+    public void setContratos(List<Contrato> contratos) {
+        this.contratos = contratos;
     }
 }
