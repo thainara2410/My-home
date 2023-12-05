@@ -80,5 +80,11 @@ My-home/
 - Cada função, classe ou módulo deve ter uma única responsabilidade, para torna o código mais legível e organizado.
 - Formatar de forma clara e padronizada o escopo das classes, métodos, estruturas condicionais, estruturas de repetição.
 
+## Como rodar a aplicação
+
+-Execute o seu backend, a forma como isso vai acontecer irá depender da sua IDE, mas é comum que ao entrar no arquivo de backend um botão de execução apareça na sua tela
+-Dentro da pasta onde contém o frontend rode os seguinte comandos nessa ordem:
+  1 - "npm install"
+  2 - "npm run dev"
 
 
