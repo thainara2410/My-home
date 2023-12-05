@@ -274,3 +274,8 @@ footer button {
 .tabela tbody tr:hover {
     background-color: rgba(47, 143, 173, 0.7); /* Cor de fundo para linhas pares */
 }
+select{
+  width: 170px;
+  position: fixed;
+  margin-top: 15px;
+}

@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import AreaDeLogin from './login/areaDeLogin';
 import PaginaPrincipal from './paginaPrincipal/paginaPrincipal';
-import PaginaPropriedade from './tabelaPropriedade/paginaPropriedades';
-import PaginaClientes from './tebelaCliente/paginaCliente';
-import PaginaContrato from './tabelaContrato/paginaContrato';
+import PaginaPropriedade from './tabelaPropriedade/Propriedade';
+import PaginaClientes from './tebelaCliente/Cliente';
+import PaginaContrato from './tabelaContrato/Contrato';
 
 function App() {
   return (

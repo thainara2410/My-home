@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef} from 'react';
 import CasaLogo from '../assets/icons/casaLogo.svg';
 import IconPerfil from '../assets/icons/iconPerfil1.png';
 import Pesquisa from '../assets/icons/pesquisa.svg';
-import {Cliente} from '../tebelaCliente/paginaCliente'
+import {Cliente} from '../tebelaCliente/Cliente'
 import { Link } from 'react-router-dom';
 import './telaPropriedade.css';
 
@@ -94,11 +94,8 @@ function App(): JSX.Element {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     console.log(newProperty.proprietario); 
-    
     try {
-      
       const response = await fetch(`http://localhost:8080/api/myhome/cadastrarpropriedade/${newProperty.proprietario.id}`, {
         method: 'POST',
         headers: {
@@ -107,25 +104,17 @@ function App(): JSX.Element {
         body: JSON.stringify(newProperty)
       });
   
-      if (response.ok) {
-        // Lidar com o sucesso da requisição
-        console.log('Propriedade cadastrada com sucesso!');
-        // Atualizar a lista de propriedades após o cadastro bem-sucedido
-        await fetchPropriedades();
-        // Ocultar o formulário após o cadastro
+      if (response.ok) { // Lidar com o sucesso da requisição
+        console.log('Propriedade cadastrada com sucesso!');// Atualizar a lista de propriedades após o cadastro bem-sucedido
+        await fetchPropriedades();// Ocultar o formulário após o cadastro
         setShowForm(false);
-      } else {
-        // Lidar com falha na requisição
+      } else { // Lidar com falha na requisição
         console.error('Erro ao cadastrar propriedade:', response.statusText);
       }
-    } catch (error) {
-      // Lidar com erros durante a requisição
+    } catch (error) {// Lidar com erros durante a requisição
       console.error('Erro ao cadastrar propriedade:', error);
     }
   };
-  
-  
-  
   
   const handleEdit = (property: Propriedade) => {
     setEditingProperty(property);
@@ -304,15 +293,14 @@ function App(): JSX.Element {
                 <input type='number' name='valor_mensal' placeholder='Valor Mensal' value={newProperty.valor_mensal} onChange={handleInputChange} />
                 <input type='number' name='quantidade_de_comodos' placeholder='Quantidade de Comodos' value={newProperty.quantidade_de_comodos} onChange={handleInputChange} />
                 <input type='number' name='quantidade_de_banheiros' placeholder='Quantidade de Banheiros' value={newProperty.quantidade_de_banheiros} onChange={handleInputChange} />
-                <input
+                <input // Input para exibir o nome do proprietario
                   type='text'
                   name='proprietario'
                   placeholder='Proprietario'
                   value={(newProperty.proprietario && clientes.find((cliente) => cliente.id === newProperty.proprietario.id))?.nome || ''}
                   readOnly
                 />
-                <input type='text' name='descricao_geral' placeholder='Descrição Geral' value={newProperty.descricao_geral} onChange={handleInputChange} />
-                <select
+                 <select // Select para escolher o proprietario
                     name='proprietario'
                     value={newProperty.proprietario.id}
                     onChange={(e) =>
@@ -329,6 +317,8 @@ function App(): JSX.Element {
                       </option>
                     ))}
                   </select>
+                <input type='text' name='descricao_geral' placeholder='Descrição Geral' value={newProperty.descricao_geral} onChange={handleInputChange} />
+               
 
                 <button className="botaoCadastrar" type='submit'>
                   {editingProperty ? 'Atualizar' : 'Cadastrar'}

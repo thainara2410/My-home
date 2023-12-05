@@ -3,8 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import CasaLogo from '../assets/icons/casaLogo.svg';
 import IconPerfil from '../assets/icons/iconPerfil1.png';
 import Pesquisa from '../assets/icons/pesquisa.svg';
-import { Cliente } from '../tebelaCliente/paginaCliente.tsx';
-import { Propriedade } from '../tabelaPropriedade/paginaPropriedades.tsx';
+import { Cliente } from '../tebelaCliente/Cliente.tsx';
+import { Propriedade } from '../tabelaPropriedade/Propriedade.tsx';
 import { Link } from 'react-router-dom';
 import './telaContratos.css';
 
@@ -21,12 +21,12 @@ export interface Contrato {
 
 function App(): JSX.Element {
   // Estados utilizados no componente
-  const [contratos, setContrato] = useState<Contrato[]>([]);
-  const formRef = useRef<HTMLDivElement>(null);
-  const [showForm, setShowForm] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  const [newContrato, setNewContrato] = useState<Contrato>({
+  const [contratos, setContrato] = useState<Contrato[]>([]); // Estado para armazenar a lista de contratos
+  const formRef = useRef<HTMLDivElement>(null); // Referência para o formulário
+  const [showForm, setShowForm] = useState(false); // Estado para exibir/ocultar o formulário
+  const [showConfirmation, setShowConfirmation] = useState(false); // Estado para exibir/ocultar a confirmação de exclusão
+  const [searchTerm, setSearchTerm] = useState<string>(''); // Estado para armazenar o termo de pesquisa
+  const [newContrato, setNewContrato] = useState<Contrato>({ // Estado para armazenar os dados do novo contrato
     id: 0,
     codigo: 0,
     dataInicio: '',
@@ -58,8 +58,8 @@ function App(): JSX.Element {
       email: ''
     }  
   });
-  const [editingContrato, setEditingContrato] = useState<Contrato | null>(null);
-  const [contratoToDelete, setContratoToDelete] = useState<Contrato | null>(null);
+  const [editingContrato, setEditingContrato] = useState<Contrato | null>(null); // Estado para armazenar o contrato que está sendo editado
+  const [contratoToDelete, setContratoToDelete] = useState<Contrato | null>(null); // Estado para armazenar o contrato que será excluído
 
   const [clientes, setClientes] = useState<Cliente[]>([]); // Estado para armazenar a lista de clientes
 
@@ -67,7 +67,7 @@ function App(): JSX.Element {
     fetchClientes(); // Busca os clientes ao carregar a página
   }, []);
 
-  const fetchClientes = async () => {
+  const fetchClientes = async () => { // Função para buscar os clientes na API
     try {
       const response = await fetch('http://localhost:8080/api/myhome/listarclientes');
       if (response.ok) {
@@ -81,8 +81,8 @@ function App(): JSX.Element {
   };
 
 
-  const [propriedades, setPropriedades] = useState<Propriedade[]>([]);
-  const fetchPropriedades = async () => {
+  const [propriedades, setPropriedades] = useState<Propriedade[]>([]); // Estado para armazenar a lista de propriedades
+  const fetchPropriedades = async () => { // Função para buscar as propriedades na API
     try {
       const response = await fetch('http://localhost:8080/api/myhome/listarpropriedades');
       if (response.ok) {
@@ -96,7 +96,7 @@ function App(): JSX.Element {
   };
 
   useEffect(() => {
-    fetchPropriedades();
+    fetchPropriedades(); // Busca as propriedades ao carregar a página
   }, []);
 
  
@@ -382,7 +382,7 @@ function App(): JSX.Element {
                 {/* Inputs do formulário */}
                 <input type='number' name='id' placeholder='ID' value={newContrato.id} onChange={handleInputChange} />
                 <input type='number' name='codigo' placeholder='Código' value={newContrato.codigo} onChange={handleInputChange} />
-                <input type='text' name='dataInicio' placeholder='Data Início' value={newContrato.dataInicio} onChange={handleInputChange} />
+                <input type='text' name='dataInicio' placeholder='Data Início = xx/xx/xxxx' value={newContrato.dataInicio} onChange={handleInputChange} />
                 <input type='text' name='termos' placeholder='Termos' value={newContrato.termos} onChange={handleInputChange} />
 
                 <input type='number' name='propriedade' placeholder='Propriedade ID' value={(newContrato.propriedade && propriedades.find((propriedade)=>propriedade.id===newContrato.propriedade.id))?.id || ''} readOnly />

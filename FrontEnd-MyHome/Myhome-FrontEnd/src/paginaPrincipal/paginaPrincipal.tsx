@@ -48,15 +48,6 @@ function PaginaPrincipal() {
               <h2>Contratos</h2>
             </section>
           </Link>
-
-          {/* <Link to='/usuarios' className='link'>
-            <section className='usuarios'>
-              <div className='ladoEsquerdo'>
-                <img src={Usuarios} alt='Icone de usuarios' />
-              </div>
-              <h2>Usuários</h2>
-            </section>
-          </Link>  */}
           
       </div>
 
