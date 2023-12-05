@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.myhome.myhome.enumerador.TipoPropriedade;
-
 @Entity
 public class Propriedade {
     @Id
@@ -20,7 +18,6 @@ public class Propriedade {
     private String rua;
     private Integer numero_da_casa;
     private Float valor_mensal;
-    //private TipoPropriedade tipo_de_imovel;
     private Integer quantidade_de_comodos;
     private Integer quantidade_de_banheiros;
     private String descricao_geral;
