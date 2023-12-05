@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef} from 'react';
 import CasaLogo from '../assets/icons/casaLogo.svg';
 import IconPerfil from '../assets/icons/iconPerfil1.png';
 import Pesquisa from '../assets/icons/pesquisa.svg';
+import { Link } from 'react-router-dom';
 import './telaClientes.css';
 
 export interface Cliente {
@@ -170,10 +171,12 @@ function App(): JSX.Element {
   return (
     <div className='App'>
       <div className='cabeçalho'>
-        <div className='logoCabeçalho'>
-          <img src={CasaLogo} alt='Logo da Casa do Código' />
-          <h1>My Home</h1>
-        </div>
+        <Link to='/principal' className='link'>
+          <div className='logoCabeçalho'>
+            <img src={CasaLogo} alt='Logo da Casa do Código' />
+            <h1>My Home</h1>
+          </div>
+        </Link>
         <img className='perfil' src={IconPerfil} alt='Icone de perfil' />
       </div>
       <div className='pesquisar'>

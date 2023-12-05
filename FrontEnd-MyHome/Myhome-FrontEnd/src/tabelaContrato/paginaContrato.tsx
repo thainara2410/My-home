@@ -5,6 +5,7 @@ import IconPerfil from '../assets/icons/iconPerfil1.png';
 import Pesquisa from '../assets/icons/pesquisa.svg';
 import { Cliente } from '../tebelaCliente/paginaCliente.tsx';
 import { Propriedade } from '../tabelaPropriedade/paginaPropriedades.tsx';
+import { Link } from 'react-router-dom';
 import './telaContratos.css';
 
 // Definição da interface para o contrato
@@ -308,10 +309,12 @@ function App(): JSX.Element {
     <div className='App'>
       {/* Cabeçalho */}
       <div className='cabeçalho'>
-        <div className='logoCabeçalho'>
-          <img src={CasaLogo} alt='Logo da Casa do Código' />
-          <h1>My Home</h1>
-        </div>
+          <Link to='/principal' className='link'>
+          <div className='logoCabeçalho'>
+            <img src={CasaLogo} alt='Logo da Casa do Código' />
+            <h1>My Home</h1>
+          </div>
+          </Link>
         <img className='perfil' src={IconPerfil} alt='Icone de perfil' />
       </div>
 
@@ -340,7 +343,7 @@ function App(): JSX.Element {
               <th>Data Início</th>
               <th>Termos</th>
               <th>Propriedade ID</th>
-              <th>Cliente ID</th>
+              <th>Cliente Nome</th>
               <th>Comandos</th>
             </tr>
           </thead>
@@ -353,7 +356,7 @@ function App(): JSX.Element {
                 <td>{contrato.dataInicio}</td>
                 <td>{contrato.termos}</td>
                 <td>{contrato.propriedade?.id}</td>
-                <td>{contrato.inquilino?.id}</td>
+                <td>{contrato.inquilino?.nome}</td>
                 <td>
                   <button onClick={() => handleEdit(contrato)}>Editar</button>
                   <button onClick={() => handleDelete(contrato)}>Excluir</button>
@@ -402,27 +405,24 @@ function App(): JSX.Element {
                     ))}
                   </select>
 
-
-
-                <input type='number' name='cliente' placeholder='Cliente ID'value={(newContrato.inquilino && clientes.find((cliente) => cliente.id === newContrato.inquilino.id))?.id || ''} //input onde sera colocado o objeto cliente
-                  readOnly />
+                  <input type='text' name='cliente' placeholder='Nome do Cliente' value={(newContrato.inquilino && clientes.find((cliente) => cliente.id === newContrato.inquilino.id))?.nome || '' }readOnly />
+                  
                 <select
-                    name='cliente'
-                    value={newContrato.inquilino.id}
-                    onChange={(e) =>                      // onde vai aparecer uma lista de clientes para o usuario selecionar
-                      setNewContrato({
+                      name='cliente'
+                      value={newContrato.inquilino.id}
+                      onChange={(e) => setNewContrato({
                         ...newContrato,
                         inquilino: clientes.find((cliente) => cliente.id === parseInt(e.target.value, 10)) || newContrato.inquilino
-                      })
-                    }                                                      
-                  >
-                    <option value=''>Selecione o cliente</option>
-                    {clientes.map((cliente) => (
-                      <option key={cliente.id} value={cliente.id}>
-                        {cliente.id} {cliente.nome}
-                      </option>
-                    ))}
-                  </select>
+                      })}
+                    >
+                      <option value=''>Selecione o cliente</option>
+                      {clientes.map((cliente) => (
+                        <option key={cliente.id} value={cliente.id}>
+                          {cliente.nome}
+                        </option>
+                      ))}
+                    </select>
+
 
                 <button className="botaoCadastrar" type='submit'>
                   {editingContrato ? 'Atualizar' : 'Cadastrar'}

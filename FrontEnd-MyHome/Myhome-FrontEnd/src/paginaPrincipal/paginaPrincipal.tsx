@@ -1,36 +1,24 @@
 import './telaPrincipal.css';
 import CasaLogo from '../assets/icons/casaLogo.svg';
 import IconPerfil from '../assets/icons/iconPerfil1.png';
-import Pesquisa from '../assets/icons/pesquisa.svg';
 import Clientes  from '../assets/icons/people.svg';
 import Imoveis  from '../assets/icons/building.svg';
 import Contratos  from '../assets/icons/Docs.svg';
-// import Usuarios from '../assets/icons/🦆 icon _password icon_.svg';
 import { Link } from 'react-router-dom';
 function PaginaPrincipal() {
   return (
-      
       <div className='App'>
+
         <div className='cabeçalho'>
+          <Link to='/principal' className='link'>
           <div className='logoCabeçalho'>
             <img src={CasaLogo} alt='Logo da Casa do Código' />
             <h1>My Home</h1>
           </div>
+          </Link>
           <img className='perfil' src={IconPerfil} alt='Icone de perfil' />
         </div>
-        <div className='pesquisar'>
-          <div className='areaPesquisa'>
-            <input 
-            type='text'
-            placeholder='Buscar por serviços'
-            // value={searchTerm}
-            // onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button className='retangulo' >  
-              <img src={Pesquisa} alt='Icone de pesquisa' />
-            </button>
-          </div>
-      </div>
+      
 
       <div className='corpoDaPagina'>
 
